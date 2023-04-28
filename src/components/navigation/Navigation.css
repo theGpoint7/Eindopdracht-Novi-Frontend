@@ -1,0 +1,157 @@
+@import "../../assets/constants.css";
+
+
+
+.start-logo {
+    height: 117px;
+    margin-bottom: -8px;
+    margin-top: -6px;
+    margin-left: -7px;
+    margin-right: -7px;
+    width: 117px;
+    position: relative;
+    /*
+    width: 109px;
+    height: min-content;
+     */
+}
+
+.nav-container{
+    height: 200px;
+    justify-content: center;
+
+}
+
+.nav-item{
+    gap: 168px;
+}
+
+
+.logo-frame{
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: fit-content;
+}
+
+.btn-container{
+
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 124px;
+    padding: 6px 0px;
+    position: relative;
+    width: 100%;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    /* height: 200px;
+    border: 2px solid red;
+     */
+}
+
+nav a,
+nav a:visited {
+    text-decoration: none;
+    color: var(--charcoal);
+}
+
+nav a:hover {
+    color: none;
+}
+
+
+
+li {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    position: relative;
+    width: fit-content;
+}
+
+.active-menu-link {
+    border-bottom: 2px solid var(--charcoal);
+
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.default-menu-link {
+    border-bottom: 2px solid transparent;
+
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.active-aanmelden-link {
+    border-bottom: 2px solid var(--bone);
+
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#aanmelden-link li {
+    background-color: var(--charcoal);
+    color: var(--bone);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#aanmelden-link a {
+    background-color: var(--charcoal);
+    color: var(--bone);
+    height: 50px;
+}
+
+.menu-link li {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-link a {
+    height: 50px;
+}
+
+/*
+
+ul {
+    list-style-type: none;
+    height: 80px;
+    flex-basis: 1120px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid black;
+    padding-right: 0%;
+}
+
+li {
+    margin: 8%;
+    height: 80px;
+
+}
+
+
+
+ */

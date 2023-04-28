@@ -1,0 +1,28 @@
+@import "./../../assets/constants.css";
+
+footer{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--sage);
+}
+
+.footer-container{
+    background-color: var(--sage);
+    height: 166px;
+    justify-content: center;
+}
+
+.footer-container * {
+    background-color: var(--sage);
+}
+
+.footer-item{
+    gap: 37px;
+    height: 72px;
+}
+
+.envelope-icon{
+    height: 48px;
+    width: 48px;
+}

@@ -1,0 +1,36 @@
+@import "./../../assets/constants.css";
+
+article{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.information-component-container-even{
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+    padding: 80px 165px;
+    gap: 100px;
+}
+
+.information-component-container-odd{
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 80px 165px;
+    gap: 100px;
+}
+
+
+.information-component-item{
+    flex-direction: column;
+    max-width: 70%;
+    align-items: flex-start;
+}
+
+.Information svg {
+    object-fit: fill;
+    max-height: 100%;
+    max-width: 25%;
+}
+

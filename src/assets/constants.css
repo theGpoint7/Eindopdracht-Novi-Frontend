@@ -1,0 +1,93 @@
+/* import font (Comic Neue: light 300 & regular 400) from google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: var(--bone);
+}
+
+:root {
+    --colombiablue: #C5DBEB;
+    --sage: #B8C9A7;
+    --bone: #EAE2D6;
+    --charcoal: #2C3E50;
+    --platinum: #DADADA;
+}
+
+.body-style {
+    font-family: 'Comic Neue', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 135%;
+}
+
+.h1-style {
+    font-family: 'Comic Neue', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 100%;
+}
+
+.menu-style {
+    font-family: 'Comic Neue', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 100%;
+}
+
+.h2-style {
+    font-family: 'Comic Neue', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 70px;
+    line-height: 70px;
+    height: 111px;
+}
+
+.h3-style{
+    font-family: 'Comic Neue', serif;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 40px;
+    line-height: 100%;
+
+}
+
+.container {
+    align-items: center;
+    display: flex;
+
+    padding: 10px 10px 0px;
+    position: relative;
+    flex-basis: 1440px;
+
+    border: 2px solid  black;
+
+     /*   border-left: 2px solid blue;
+        border-right: 2px solid blue;
+*/
+
+}
+
+.item-container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+
+    border: 2px solid green;
+/*
+        border: 2px solid green;
+        height: 109px;
+*/
+}
+
+.component-style{
+    border-top: 40px solid var(--sage);
+
+}
