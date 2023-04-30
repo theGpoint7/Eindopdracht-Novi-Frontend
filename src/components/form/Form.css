@@ -1,0 +1,45 @@
+@import "./../../assets/constants.css";
+
+form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.form-component-container{
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 40px 300px 80px;
+    gap: 40px;
+}
+
+.form-fieldset{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 22px;
+    width: 580px;
+}
+
+.form-div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-div-checkbox{
+    margin-top: -20px;
+    padding-bottom: 20px;
+}
+
+.form-field{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-title{
+    text-align: center;
+}

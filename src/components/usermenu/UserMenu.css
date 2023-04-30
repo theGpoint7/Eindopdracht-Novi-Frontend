@@ -1,0 +1,49 @@
+@import "./../../assets/constants.css";
+
+.usermenu-div{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.usermenu-container{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 200px 80px;
+    gap: 40px;
+}
+
+.usermenu-table.section-1{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    width: 510px;
+}
+
+.usermenu-table.section-2{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 21px;
+    width: 652px;
+}
+
+.usermenu-table > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.usermenu-table.section-1 > div > p {
+    width: 250px;
+}
+
+.usermenu-table > div > button {
+    width: 50%;
+}
+
+
+
+

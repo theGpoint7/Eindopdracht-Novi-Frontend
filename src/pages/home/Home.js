@@ -1,7 +1,12 @@
+
+
 import React from 'react';
 import './Home.css';
+
 import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+
+
 
 import { ReactComponent as SaffierKlusjes} from "../../assets/Saffier Klusjes.svg";
 import { ReactComponent as Idea} from "../../assets/Idea_icon.svg";
@@ -21,16 +26,18 @@ function Home() {
 
     return (
         <main>
+
             <Information
                 icon={<SaffierKlusjes />}
                 title="Welkom"
                 description="Op de Saffier kunnen we elkaars hulp best wel eens gebruiken! Wil je graag hulp bij een klusje of wil je je hulp aanbieden? Meld je dan vrijblijvend aan!"
                 position="odd"
             />
+
             <Information
-                icon={<Idea />}
-                title="Wilt u graag wat hulp?"
-                description={
+                 icon={<Idea />}
+                 title="Wilt u graag wat hulp?"
+             description={
                     <React.Fragment>
                         De een ligt misschien ziek op bed en wil graag dat er boodschappen worden gedaan. Bij een ander
                         moet er een lamp worden vervangen. Iedereen die een beetje hulp kan gebruiken kan een klusje
@@ -45,6 +52,8 @@ function Home() {
                 }
                 position="even"
             />
+
+
             <Information
                 icon={<HandShake />}
                 title="Wil jij helpen klussen?"
@@ -58,7 +67,9 @@ function Home() {
                 }
                 position="odd"
             />
-        </main>);
+
+        </main>
+    );
 }
 
 /*

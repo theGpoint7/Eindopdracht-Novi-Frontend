@@ -14,7 +14,7 @@ import Footer from "./components/footer/Footer";
 
 function App() {
 
-    const isLoggedIn = false;
+    const isLoggedIn = true;
 
   return (
       <>

@@ -25,4 +25,5 @@ footer{
 .envelope-icon{
     height: 48px;
     width: 48px;
+    fill: var(--charcoal)
 }

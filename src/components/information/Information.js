@@ -14,11 +14,7 @@ function Information ({icon, title, description, position}) {
                     <h2 className="h2-style"> {title}</h2>
                     <p className="body-style"> {description} </p>
                 </div>
-
-
                         {icon}
-
-
             </div>
         </article>
     );

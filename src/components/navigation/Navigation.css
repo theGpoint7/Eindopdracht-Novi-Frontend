@@ -1,15 +1,16 @@
 @import "../../assets/constants.css";
 
-
+nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .start-logo {
     height: 117px;
-    margin-bottom: -8px;
-    margin-top: -6px;
-    margin-left: -7px;
-    margin-right: -7px;
     width: 117px;
     position: relative;
+    fill: var(--charcoal)
     /*
     width: 109px;
     height: min-content;
@@ -107,19 +108,20 @@ li {
     justify-content: center;
 }
 
-#aanmelden-link li {
+#account-link li {
     background-color: var(--charcoal);
     color: var(--bone);
-    height: 100px;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#aanmelden-link a {
+#account-link a {
     background-color: var(--charcoal);
     color: var(--bone);
     height: 50px;
+    text-align: center;
 }
 
 .menu-link li {
@@ -131,6 +133,7 @@ li {
 
 .menu-link a {
     height: 50px;
+    text-align: center;
 }
 
 /*

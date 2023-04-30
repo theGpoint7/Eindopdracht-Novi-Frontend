@@ -4,6 +4,9 @@ import { NavLink } from "react-router-dom";
 import {ReactComponent as SaffierKlusjes} from "../../assets/SK-logo.svg";
 
 function Navigation() {
+
+    const isLoggedIn = true;
+
     return (
         <nav>
             <div className="container nav-container">
@@ -24,10 +27,19 @@ function Navigation() {
                                 <li>
                                     <NavLink className={({ isActive }) => isActive ? "active-menu-link" : "default-menu-link"} to="/klusje-aanmelden">Klusje Aanmelden</NavLink></li>
                             </ul>
-                            <ul id="aanmelden-link">
-                                <li>
-                                    <NavLink className={({ isActive }) => isActive ? "active-aanmelden-link" : "default-menu-link"} to="/aanmelden">Aanmelden</NavLink></li>
-                            </ul>
+                            {isLoggedIn ? (
+                                <ul id="account-link">
+                                    <li>
+                                        <NavLink className={({ isActive }) => isActive ? "active-aanmelden-link" : "default-menu-link"} to="/account"> Account <br/> Instellingen</NavLink>
+                                    </li>
+                                </ul>
+                            ) : (
+                                <ul id="account-link">
+                                    <li>
+                                        <NavLink className={({ isActive }) => isActive ? "active-aanmelden-link" : "default-menu-link"} to="/aanmelden">Aanmelden</NavLink>
+                                    </li>
+                                </ul>
+                        )}
                     </div>
                 {/* <h4>De Tandenborstel</h4> */}
 

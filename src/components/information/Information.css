@@ -32,5 +32,8 @@ article{
     object-fit: fill;
     max-height: 100%;
     max-width: 25%;
+    fill: var(--charcoal)
 }
+
+
 
