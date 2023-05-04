@@ -1,9 +1,12 @@
 import React from 'react';
 import './Register.css';
+import { useForm } from "react-hook-form";
 
 import Form from "../../components/form/Form";
 
 function Register () {
+
+
     const fields = [
         { name: 'first-name', label: 'Voornaam', type: 'text' },
         { name: 'last-name', label: 'Achternaam', type: 'text' },
@@ -13,6 +16,8 @@ function Register () {
         { name: 'password', label: 'Wachtwoord', type: 'password' },
         { name: 'password-repeat', label: 'Wachtwoord (nogmaals)', type: 'password' },
     ];
+
+
 
     return (
         <main>

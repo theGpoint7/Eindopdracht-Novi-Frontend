@@ -13,6 +13,7 @@ function Newjob () {
     return (
         <main>
             <Form
+                name="textArea"
                 title="Klusje Aanmelden"
                 fields={fields}
                 button="Verzoek Versturen"

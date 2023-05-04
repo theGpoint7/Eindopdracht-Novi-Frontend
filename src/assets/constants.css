@@ -2,6 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@300;400&display=swap');
 
 
+/* als er genoeg content op de pagina geladen word dat er een verticale scroll-balk word gerenderd bewoog de pagina een paar px naar links, hiermee word dat voorkomen */
+html {
+    overflow-y: scroll;
+}
+
+@supports (scrollbar-gutter: stable) {
+    html {
+        overflow-y: auto;
+        scrollbar-gutter: stable;
+    }
+}
 
 * {
     padding: 0;
@@ -77,11 +88,7 @@
     position: relative;
     flex-basis: 1440px;
 
-    border: 2px solid  black;
-
-     /*   border-left: 2px solid blue;
-        border-right: 2px solid blue;
-*/
+    /*  border: 2px solid  black; */
 
 }
 
@@ -91,11 +98,8 @@
     position: relative;
     width: fit-content;
 
-    border: 2px solid green;
-/*
-        border: 2px solid green;
-        height: 109px;
-*/
+    /* border: 2px solid green; */
+
 }
 
 .component-style{

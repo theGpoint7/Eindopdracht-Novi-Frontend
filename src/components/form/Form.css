@@ -43,3 +43,25 @@ form{
 .form-title{
     text-align: center;
 }
+
+.hide-pass{
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    background-color: white;
+}
+
+.input-toggle-container {
+    position: relative;
+    display: inline-block;
+
+}
+
+.toggle-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    background-color: white;
+}

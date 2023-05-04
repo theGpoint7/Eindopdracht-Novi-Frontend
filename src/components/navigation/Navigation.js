@@ -5,7 +5,7 @@ import {ReactComponent as SaffierKlusjes} from "../../assets/SK-logo.svg";
 
 function Navigation() {
 
-    const isLoggedIn = true;
+    const isLoggedIn = false;
 
     return (
         <nav>
