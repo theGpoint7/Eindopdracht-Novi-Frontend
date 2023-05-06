@@ -1,17 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './Account.css';
-
+import {useNavigate} from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
 import UserMenu from "../../components/usermenu/UserMenu";
 
+/*
+const Account = () => {
+ */
+
+
+
 function Account () {
+    const {user} = useContext(AuthContext)
+    const navigate = useNavigate();
+
+
+
 
     return (
         <main>
             <UserMenu
                 title="Account Instellingen"
                 Voornaam="Pietje"
-                Achternaam="Puk"
-                Email="pietje.puk@gmail.com"
+                Achternaam={user.username}
+                Email={user.email}
                 Telefoonnummer="06-12345678"
                 Huisnummer="8-111"
                 Wachtwoord="**********"

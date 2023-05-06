@@ -1,9 +1,6 @@
-
-
 import React from 'react';
 import './Home.css';
 
-import {Link} from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 
@@ -17,12 +14,6 @@ import Information from "../../components/information/Information";
 
 function Home() {
     const navigate = useNavigate();
-
-    function clickHandler(e) {
-        e.preventDefault();
-        navigate("/registreren");
-        console.log("We gaan nu naar de registratie pagina!")
-    }
 
     return (
         <main>

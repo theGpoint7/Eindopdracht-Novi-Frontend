@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import axios from 'axios';
 import './Form.css';
 import { useForm } from "react-hook-form";
 import {Link} from "react-router-dom";
 import {ReactComponent as EyeHide} from "../../assets/eye_hide_icon.svg";
 import {ReactComponent as EyeView} from "../../assets/eye_view_icon.svg";
+import {AuthContext} from "../../context/AuthContext";
+
 
 // function for selecting the right validation function
 function getValidationFunction(fieldType) {
     switch (fieldType) {
-        case 'first-name':
+        case 'first_name':
             return validateFirstName;
-        case 'last-name':
+        case 'last_name':
             return validateLastName;
         case 'email':
             return validateEmail;
-        case 'phone-number':
+        case 'phone_number': // Changed to an underscore
             return validatePhoneNumber;
-        case 'housenumber':
+        case 'house_number': // Changed to an underscore
             return validateHouseNumber;
         case 'jobDescription':
             return validateTextArea;
@@ -27,6 +29,7 @@ function getValidationFunction(fieldType) {
             return () => true; // default validation function that always returns true (no validation)
     }
 }
+
 // formvalidation functions:
 function validateTextArea(inputValue) {
     const errorMessage = "Het bericht moet minimaal 5 en maximaal 50 karakters lang zijn en mag alleen letters, getallen en '-' of '_' bevatten.";
@@ -97,42 +100,86 @@ function validatePassword(inputValue) {
     }
 }
 
-function handleFormSubmit(data) {
-    if (data.password !== data['password-repeat']) {
-        setError("password-repeat", {
-            type: "manual",
-            message: "Wachtwoorden komen niet overeen.",
-        });
-    } else {
-        console.log(data);
-        console.log(errors);
-    }
-}
-
 function Form ({title, fields, button, message, linkWord, linkTo, onSubmit}) {
 
     const { handleSubmit, formState: { errors }, register, setError } = useForm({mode: "onBlur"});
 
     const [passwordShown, togglePasswordShown] = useState(false);
+    const [apiErrorMessage, setApiErrorMessage] = useState("");
 
-
-    useEffect(() => {
-        fetchData();
-    }, []);
+    const {login} = useContext(AuthContext)
 
 
 
-return (
+    async function handleFormSubmit(data) {
+        console.log("handleformsubmit called");
 
-            <form className="Form component-style" onSubmit={handleSubmit(handleFormSubmit)}>
-                <div className="container form-component-container">
-                    <legend className="h1-style form-title">{title}</legend>
+        if (button === "Maak account aan" && data.password !== data['password_repeat']) {
+            console.log("wachtwoorden ongelijk");
+            setError("password_repeat", {
+                type: "manual",
+                message: "Wachtwoorden komen niet overeen.",
+            });
+        } else {
+            try {
+                let response;
+                const API_URL = 'https://frontend-educational-backend.herokuapp.com/api';
+
+                const userData = {
+                    email: data.email,
+                    password: data.password,
+                };
+
+                if (button === "Maak account aan") {
+                    console.log('Attempting to register...');
+                    console.log(data.email);
+                    console.log(data['last_name']); // Corrected property access
+                    console.log(data.password);
+                    response = await axios.post(`${API_URL}/auth/signup`, {
+                        "username": data['last_name'],
+                        "email" : data.email,
+                        "password" :data.password,
+                        "role": ["user"]
+                    });
+
+                    console.log('Registration successful:', response);
+                } else if (button === "Inloggen") {
+                    console.log('Attempting to log in...');
+                    console.log(data["last_name"]);
+                    console.log(data.password);
+                    response = await axios.post(`${API_URL}/auth/signin`, {
+                        "username": data["last_name"],
+                        "password": data.password,
+                    });
+                    login(response.data);
+                    console.log('Login successful:', response);
+                }
+            } catch (error) {
+                console.error("Error occurred:", error);
+                if (error.response) {
+                    console.log("Error message:", error.response.data.message);
+                    setApiErrorMessage(error.response.data.message);
+                }
+            }
+        }
+    }
+
+
+
+
+
+
+
+    return (
+        <form className="Form component-style" onSubmit={handleSubmit(handleFormSubmit)}>
+            <div className="container form-component-container">
+                <legend className="h1-style form-title">{title}</legend>
                     <fieldset className="form-fieldset">
 
                         {fields.map((field, index) => (
                             <React.Fragment key={index}>
                                 <div className="body-style form-div">
-                                    <p className="form-field">
+                                    <div className="form-field">
 
 
                                         {field.type === 'textarea' ? (
@@ -196,23 +243,30 @@ return (
 
                                                 </React.Fragment>
                                         }
-                                    </p>
-                                    {field.type !== 'checkbox' && <div id={`${field.name}Feedback`} className="errorMSG">{errors[field.name]?.message}</div>}
+                                    </div>
+                                    {field.type !== 'checkbox' && (
+                                        <div id={`${field.name}Feedback`} className="errorMSG">
+                                            {errors[field.name]?.message ||
+                                                (apiErrorMessage) 
+                                            }
+                                        </div>
+
+                                    )}
                                 </div>
                                 {field.type === 'checkbox' &&
                                     <div className="body-style form-div-checkbox">
-                                        <p className="form-field">
+                                        <div className="form-field">
                                             <label htmlFor={field.name}>{field.label}</label>
                                             <input
                                                 type="checkbox"
                                                 {...register(field.name)}
                                                 id={field.name} />
-                                        </p>
+                                        </div>
                                     </div>
                                 }
                             </React.Fragment>
                         ))}
-                        <button className="standard-button menu-style" type="submit" onClick={onSubmit}>{button}</button>
+                        <button className="standard-button menu-style" type="submit">{button}</button>
 
                     </fieldset>
                     <p className={`body-style ${linkWord ? `standard-link` : ``}`}>

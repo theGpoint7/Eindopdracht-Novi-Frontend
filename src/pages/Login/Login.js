@@ -1,15 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import './Login.css';
-
+import {AuthContext} from "../../context/AuthContext";
+import axios from "axios";
+import {useForm} from "react-hook-form";
 import Form from "../../components/form/Form";
 
 function Login () {
 
+
     const fields = [
         {
-            name: 'email',
-            label: 'Email',
-            type: 'email',
+
+            name: 'last_name',
+            label: 'Achternaam',
+            type: 'text',
 
         },
         {
@@ -23,8 +27,6 @@ function Login () {
     return (
         <main>
 
-
-
             <Form
                 title="Aanmelden"
                 fields={fields}
@@ -32,7 +34,6 @@ function Login () {
                 message="Heb je geen account? Klik dan hier om je te registreren"
                 linkWord="hier"
                 linkTo="/registreren"
-
             />
         </main>
     );

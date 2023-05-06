@@ -1,12 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import './UserMenu.css';
 import { useNavigate } from "react-router-dom";
+import {AuthContext} from "../../context/AuthContext";
+
 
 function UserMenu ({ title, Voornaam, Achternaam, Email, Telefoonnummer, Huisnummer, Wachtwoord, button1, button2, offeredJobHelpStatistic, requestedJobHelpStatistic, logOutButton, section}) {
     const navigate = useNavigate();
 
+    const { isAuthenticated, logout} = useContext(AuthContext)
+
+    function handleLogoutSubmit() {
+        console.log({isAuthenticated});
+        console.log("handleLogoutSubmit called");
+        logout();
+        console.log({isAuthenticated});
+    }
+
+
     return (
-        <div className="component-style usermenu-div ">
+
+    <div className="component-style usermenu-div ">
             <div className="container usermenu-container">
                 { title && (
                     <h2 className="h1-style">{title}</h2>
@@ -76,7 +89,13 @@ function UserMenu ({ title, Voornaam, Achternaam, Email, Telefoonnummer, Huisnum
                     )}
                 </div>
                 {logOutButton && (
-                <button className="standard-button menu-style" type="submit">{logOutButton}</button>
+                <button
+                    className="standard-button menu-style"
+                    type="submit"
+                    onClick={handleLogoutSubmit}
+                >
+                    {logOutButton}
+                </button>
                 )}
             </div>
         </div>

@@ -1,6 +1,9 @@
 import React from "react";
 import './App.css';
 import { Routes, Route, Navigate } from "react-router-dom";
+import {AuthContext} from "./context/AuthContext";
+import {useContext} from "react";
+
 
 import Home from "./pages/home/Home";
 import Account from "./pages/Account/Account";
@@ -14,7 +17,11 @@ import Footer from "./components/footer/Footer";
 
 function App() {
 
-    const isLoggedIn = true;
+    const { isAuthenticated } = useContext(AuthContext)
+
+   /*
+   const isLoggedIn = true;
+    */
 
   return (
       <>
@@ -22,7 +29,7 @@ function App() {
           <Routes>
               <Route path="/" element={<Home/>} />
               <Route path="/klusjes-bekijken" element={<Jobs/>} />
-              <Route path="/klusje-aanmelden" element={isLoggedIn === true ? <Newjob/> : <Navigate to="/"/> } />
+              <Route path="/klusje-aanmelden" element={isAuthenticated ? <Newjob/> : <Navigate to="/"/> } />
               <Route path="/aanmelden" element={<Login/>} />
               <Route path="/registreren" element={<Register/>} />
               <Route path="/account" element={<Account/>} />

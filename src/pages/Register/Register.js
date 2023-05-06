@@ -8,14 +8,15 @@ function Register () {
 
 
     const fields = [
-        { name: 'first-name', label: 'Voornaam', type: 'text' },
-        { name: 'last-name', label: 'Achternaam', type: 'text' },
+        { name: 'first_name', label: 'Voornaam', type: 'text' },
+        { name: 'last_name', label: 'Achternaam', type: 'text' },
         { name: 'email', label: 'Email', type: 'email' },
-        { name: 'phone-number', label: 'Telefoon-nummer', type: 'tel' },
-        { name: 'housenumber', label: 'Huisnummer', type: 'text' },
+        { name: 'phone_number', label: 'Telefoon-nummer', type: 'tel' }, // Changed to an underscore
+        { name: 'house_number', label: 'Huisnummer', type: 'text' }, // Changed to an underscore
         { name: 'password', label: 'Wachtwoord', type: 'password' },
-        { name: 'password-repeat', label: 'Wachtwoord (nogmaals)', type: 'password' },
+        { name: 'password_repeat', label: 'Wachtwoord (nogmaals)', type: 'password' }, // Changed to an underscore
     ];
+
 
 
 
