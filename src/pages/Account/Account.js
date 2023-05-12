@@ -1,34 +1,31 @@
-import React, {useContext} from 'react';
+import React, { useContext, useState } from 'react';
 import './Account.css';
-import {useNavigate} from "react-router-dom";
-import {AuthContext} from "../../context/AuthContext";
-import UserMenu from "../../components/usermenu/UserMenu";
+import { AuthContext } from '../../context/AuthContext';
 
-/*
-const Account = () => {
- */
+import UserMenu from '../../components/usermenu/UserMenu';
+import PasswordInput from "../../components/passwordinput/PasswordInput";
 
+function Account() {
+    const { user } = useContext(AuthContext);
 
-
-function Account () {
-    const {user} = useContext(AuthContext)
-    const navigate = useNavigate();
-
-
-
+    const [buttonClicked, setButtonClicked] = useState(false);
 
     return (
         <main>
             <UserMenu
                 title="Account Instellingen"
-                Voornaam="Pietje"
-                Achternaam={user.username}
-                Email={user.email}
-                Telefoonnummer="06-12345678"
-                Huisnummer="8-111"
-                Wachtwoord="**********"
+                Voornaam="niet opgeslagen in database"
+                Achternaam={user ? user.username : ''}
+                Email={user ? user.email : ''}
+                Telefoonnummer="niet opgeslagen in database"
+                Huisnummer="niet opgeslagen in database"
+                Wachtwoord='**********'
                 button1="Gegevens wijzigen"
                 button2="Wachtwoord wijzigen"
+                button3="Wachtwoord opslaan"
+                PasswordInputComponent={PasswordInput}
+                buttonClicked={buttonClicked}
+                setButtonClicked={setButtonClicked}
                 section="1"
             />
             <UserMenu
@@ -37,13 +34,10 @@ function Account () {
                 requestedJobHelpStatistic="0/0"
                 section="2"
             />
-            <UserMenu
-                logOutButton="Afmelden"
-                section="1"
-            />
+            <UserMenu logOutButton="Afmelden" section="1" />
+
         </main>
     );
 }
 
 export default Account;
-

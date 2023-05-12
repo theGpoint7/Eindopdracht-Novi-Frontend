@@ -3,6 +3,7 @@ import './Newjob.css';
 
 import Form from "../../components/form/Form";
 
+
 function Newjob () {
 
     const fields = [
@@ -21,6 +22,7 @@ function Newjob () {
                 linkWord=""
                 linkTo=""
             />
+
         </main>
     );
 }

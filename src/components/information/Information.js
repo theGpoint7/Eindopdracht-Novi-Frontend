@@ -11,7 +11,7 @@ function Information ({icon, title, description, position}) {
         <article className="Information component-style">
             <div className={`container ${containerStyle}`}>
                 <div className="item-container information-component-item">
-                    <h2 className="h2-style"> {title}</h2>
+                    <h2 className="h2-style"> {title} </h2>
                     <p className="body-style"> {description} </p>
                 </div>
                         {icon}

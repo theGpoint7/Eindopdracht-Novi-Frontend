@@ -57,10 +57,10 @@ function AuthContextProvider({children}){
                 role:data.role,
             },
             status: "done",
-        })
-        navigate('/account');
+        });
     }
     function logout(){
+        console.log("aan het uitloggen")
         localStorage.clear()
         toggleIsAuth({
             isAuthenticated: false,

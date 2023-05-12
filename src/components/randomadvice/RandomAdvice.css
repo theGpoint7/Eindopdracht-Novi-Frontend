@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Oleo+Script&display=swap');
+
+
+.bwt{
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+
+.randomAdviceContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    color: #3f51b5;
+    font-family: 'Oleo Script', cursive;
+    font-size: 2.5rem;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    white-space: pre-wrap;
+    line-height: 1.4;
+    text-align: center;
+    position: relative;
+    height: 500px;
+    width: 500px;
+    cursor: pointer;
+
+}
+
+.randomAdviceContainer > * {
+    background-color: white;
+}
+
+.title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.bwt-topleft,
+.bwt-topright,
+.bwt-bottomright,
+.bwt-bottomleft {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    fill: #3f51b5;
+    background-color: white;
+    margin: 10px;
+}
+
+.bwt-topleft {
+    top: 5px;
+    left: 5px;
+}
+
+.bwt-topright {
+    top: 5px;
+    right: 5px;
+    transform: rotate(90deg);
+}
+
+.bwt-bottomright {
+    bottom: 5px;
+    right: 5px;
+    transform: rotate(180deg);
+}
+
+.bwt-bottomleft {
+    bottom: 5px;
+    left: 5px;
+    transform: rotate(270deg);
+}

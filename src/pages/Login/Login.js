@@ -1,20 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './Login.css';
-import {AuthContext} from "../../context/AuthContext";
-import axios from "axios";
-import {useForm} from "react-hook-form";
 import Form from "../../components/form/Form";
 
 function Login () {
 
+//ik hoop dat je een hele unieke achternaam hebt, want omdat de achternaam als username word gebruikt, moet elke gebruiker een unieke achternaam hebben.
 
     const fields = [
         {
 
             name: 'last_name',
-            label: 'Achternaam',
+            label: 'Gebruikersnaam',
             type: 'text',
-
         },
         {
             name: 'password',
@@ -35,6 +32,7 @@ function Login () {
                 linkWord="hier"
                 linkTo="/registreren"
             />
+
         </main>
     );
 }

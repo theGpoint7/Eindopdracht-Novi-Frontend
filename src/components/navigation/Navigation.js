@@ -1,18 +1,28 @@
 import React, { useContext } from 'react';
 import './Navigation.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { ReactComponent as SaffierKlusjes } from '../../assets/SK-logo.svg';
 import { AuthContext } from '../../context/AuthContext';
 
 function Navigation() {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, logout } = useContext(AuthContext);
+    const location = useLocation();
+    const isAccountSettings = location.pathname === '/account';
+
+    function handleLogout(){
+       console.log("handleLogoutFunction called")
+            logout();
+    };
+
 
     return (
         <nav>
             <div className="container nav-container">
                 <div className="item-container nav-item">
                     <div className="logo-frame">
+                        <NavLink to="/">
                         <SaffierKlusjes className="start-logo" />
+                        </NavLink>
                     </div>
                     <div className="btn-container menu-style">
                         <ul className="menu-link">
@@ -60,13 +70,23 @@ function Navigation() {
                                                 ? 'active-aanmelden-link'
                                                 : 'default-menu-link'
                                         }
-                                        to="/account"
+                                        to={isAccountSettings ? '/' : '/account'}
+                                        onClick={isAccountSettings ? handleLogout : undefined}
+
                                     >
-                                        {' '}
-                                        Account <br /> Instellingen
+                                        {isAccountSettings ? (
+                                            'Afmelden'
+                                        ) : (
+                                            <>
+                                                {'Account'}
+                                                <br />
+                                                {'Instellingen'}
+                                            </>
+                                        )}
                                     </NavLink>
                                 </li>
                             </ul>
+
                         ) : (
                             <ul id="account-link">
                                 <li>
@@ -91,3 +111,4 @@ function Navigation() {
 }
 
 export default Navigation;
+
