@@ -5,7 +5,7 @@ import { ReactComponent as EyeView } from "../../assets/eye_view_icon.svg";
 
 
 function validatePassword(inputValue) {
-    const errorMessage = "Het wachtwoord moet minimaal 8 tekens bevatten, waarvan één hoofdletter, één kleine letter, één nummer en één speciaal teken.";
+    const errorMessage = "Gebruik minimaal 1 hoofdletter, kleine letter, getal en speciaal teken. Minimaal 8 tekens";
     const regexPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])[A-Za-z\d!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]{8,}$/;
 
 
@@ -16,12 +16,16 @@ function validatePassword(inputValue) {
     }
 }
 
-function PasswordInput({ field, register }) {
+function PasswordInput({ field, register, errors }) {
     const [passwordShown, togglePasswordShown] = useState(false);
 
+    if (!field) {
+        return null;
+    }
+
     return (
-        <React.Fragment>
-            {field.label !== "Nieuw wachtwoord" && (
+        <div className="field-container">
+            {field.label !== "Nieuwe wachtwoord" && field.label !== "Herhaal je nieuwe wachtwoord" && (
                 <label htmlFor={field.name}>{field.label}</label>
             )}
             <div className="input-toggle-container">
@@ -35,7 +39,7 @@ function PasswordInput({ field, register }) {
                         },
                         validate: validatePassword,
                     })}
-                    placeholder={`Typ hier je ${field.label.toLowerCase()}`}
+                    placeholder={field.label === "Herhaal je nieuwe wachtwoord" ? "Herhaal je nieuwe wachtwoord" : `Typ hier je ${field.label.toLowerCase()}`}
                 />
                 <div onClick={() => togglePasswordShown(!passwordShown)} className="toggle-icon">
                     {passwordShown ? (
@@ -45,7 +49,8 @@ function PasswordInput({ field, register }) {
                     )}
                 </div>
             </div>
-        </React.Fragment>
+            {errors && errors[field.name] && <p className="change-password-error errorMSG">{errors[field.name].message}</p>}
+        </div>
     );
 }
 

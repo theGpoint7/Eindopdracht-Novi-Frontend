@@ -1,9 +1,9 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import './UserMenu.css';
-import { useNavigate } from "react-router-dom";
 import {AuthContext} from "../../context/AuthContext";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import Modal from "../modal/Modal";
 
 
 
@@ -22,12 +22,18 @@ function UserMenu({
                       requestedJobHelpStatistic,
                       logOutButton,
                       section,
-                      buttonClicked,
-                      setButtonClicked,
                       PasswordInputComponent,
                   }) {
 
     const { isAuthenticated, logout } = useContext(AuthContext);
+
+    const [displayModal, setDisplayModal] = useState(false);
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalMessage, setModalMessage] = useState("");
+    const [navigateTo, setNavigateTo] = useState("")
+    const [showPasswordFields, setShowPasswordFields] = useState(false);
+
+
 
     function handleLogoutSubmit() {
         console.log({ isAuthenticated });
@@ -42,12 +48,19 @@ function UserMenu({
 
     async function handlePasswordUpdate(data) {
         console.log("handlePasswordUpdate called")
-        console.log(data.passwordchange)
         try {
-            // Perform the PUT request to update the password
+            // Check if the passwords match
+            if (data.passwordchange !== data.passwordchangeRepeat) {
+                setError("passwordchangeRepeat", { message: "Watchtwoorden komen niet overeen" });
+                console.log(errors);
+
+                return;
+            }
+
+            // a put request for updating the password
             const response = await axios.put(`https://frontend-educational-backend.herokuapp.com/api/user`, {
                 password: data.passwordchange,
-                repeatedPassword: data.passwordchange,
+                repeatedPassword: data.passwordchangeRepeat,
             }, {
                 headers: {
                     "Content-Type": "application/json",
@@ -55,10 +68,16 @@ function UserMenu({
                 }
             });
 
-            // If the request is successful, call the `onPasswordUpdateSuccess` function
+            console.log(response);
+
             if (response.status === 200) {
-                setButtonClicked(false);
                 console.log("succesvol wachtwoord gewijzigd!")
+                setModalTitle("Wachtwoord gewijzigd!");
+                setModalMessage("Uw wachtwoord is succesvol gewijzigd, u word nu omgeleid naar de startpagina. ");
+                setDisplayModal(true);
+                setNavigateTo("/");
+
+
             }
         } catch (error) {
             console.log("catch error console log")
@@ -68,10 +87,13 @@ function UserMenu({
 
     const passwordField = {
         name: "passwordchange",
-        label: "Nieuw wachtwoord",
+        label: "Nieuwe wachtwoord",
     };
 
-
+    const passwordRepeatField = {
+        name: "passwordchangeRepeat",
+        label: "Herhaal je nieuwe wachtwoord",
+    };
 
     return (
 
@@ -118,42 +140,56 @@ function UserMenu({
                         </div>
                     )}
                     {Wachtwoord && (
-                        <div className="usermenu-table-description">
-                            <p>Wachtwoord</p>
-                            {buttonClicked ? (
-                                <form
-                                    id="password-update-form"
-                                >
-                                    <PasswordInputComponent
-                                        field={passwordField}
-                                        register={register}
-                                    />
-                                </form>
+                        <form className="usermenu-table-description" onSubmit={handleSubmit(handlePasswordUpdate)}>
+                            {showPasswordFields ? (
+                                <div>
+                                    <p>Wachtwoord</p>
+                                    <div className="password-fields-wrapper full-width">
+                                        <div className="password-input-wrapper">
+                                            <PasswordInputComponent field={passwordField} register={register} errors={errors} />
+                                        </div>
+                                        <div className="password-input-wrapper">
+                                            <PasswordInputComponent field={passwordRepeatField} register={register} errors={errors} />
+                                        </div>
+                                    </div>
+                                </div>
                             ) : (
-                                <p>{Wachtwoord}</p>
+                                <div className="usermenu-table-description">
+                                    <p>Wachtwoord</p>
+                                    <p>{Wachtwoord}</p>
+                                </div>
                             )}
-                        </div>
-                    )}
-                    {button2 && (
-                        <div className="usermenu-table-description">
-                            <p></p>
 
-                            <button
-                                className="standard-button menu-style"
-                                type="button"
-                                onClick={() => {
-                                    if (buttonClicked) {
-                                        handleSubmit(handlePasswordUpdate)();
-                                    } else {
-                                        setButtonClicked(true);
-                                    }
-                                }}
-                            >
-                                {buttonClicked ? button3 : button2}
-                            </button>
 
-                        </div>
+                            {button2 && !showPasswordFields && (
+                                <div className="usermenu-table-description">
+                                    <p></p>
+                                    <button
+                                        className="standard-button menu-style"
+                                        type="button" // keep the button type as 'button'
+                                        onClick={() => setShowPasswordFields(true)} // toggle the state variable here
+                                    >
+                                        {button2}
+                                    </button>
+                                </div>
+                            )}
+
+                            {showPasswordFields && (
+                                <div className="usermenu-table-description">
+                                    <p></p>
+                                <button
+                                    className="standard-button menu-style"
+                                    type="submit"
+                                >
+                                    {button3}
+                                </button>
+                                </div>
+                            )}
+
+                        </form>
                     )}
+
+
 
 
                     { offeredJobHelpStatistic && (
@@ -175,6 +211,13 @@ function UserMenu({
                     </button>
                 )}
             </div>
+            <Modal
+                title={modalTitle}
+                message={modalMessage}
+                setDisplayModal={setDisplayModal}
+                displayModal={displayModal}
+                navigateTo={navigateTo}
+            />
         </div>
     );
 }

@@ -8,8 +8,6 @@ import PasswordInput from "../../components/passwordinput/PasswordInput";
 function Account() {
     const { user } = useContext(AuthContext);
 
-    const [buttonClicked, setButtonClicked] = useState(false);
-
     return (
         <main>
             <UserMenu
@@ -24,8 +22,6 @@ function Account() {
                 button2="Wachtwoord wijzigen"
                 button3="Wachtwoord opslaan"
                 PasswordInputComponent={PasswordInput}
-                buttonClicked={buttonClicked}
-                setButtonClicked={setButtonClicked}
                 section="1"
             />
             <UserMenu

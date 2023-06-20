@@ -44,6 +44,53 @@
     width: 50%;
 }
 
+.password-input-wrapper {
 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-bottom: 20px;
+}
 
+.paragraph-layout{
+    justify-content: space-between;
+}
 
+.usermenu-table > * > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.usermenu-table.section-1 > * > div > p {
+    width: 250px;
+}
+
+.usermenu-table > * > div > button {
+    width: 50%;
+}
+
+.usermenu-table > form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.password-fields-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.usermenu-table-description {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+
+.full-width {
+    width: 100%;
+}
