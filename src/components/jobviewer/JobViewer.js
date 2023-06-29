@@ -1,7 +1,6 @@
 import React from 'react';
 import './JobViewer.css';
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+
 
 function JobViewer(props) {
     const { title, jobFields } = props;
