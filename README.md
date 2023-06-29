@@ -1,7 +1,7 @@
 # Installatiehandleiding
 
 
-![Logo](https://github.com/theGpoint7/Eindopdracht-Novi-Frontend/blob/main/src/assets/SK-logo.svg)
+![Logo](https://github.com/theGpoint7/Eindopdracht-Novi-Frontend/blob/main/src/assets/SK-logo3.svg)
 
 # Saffier Klusjes
 
