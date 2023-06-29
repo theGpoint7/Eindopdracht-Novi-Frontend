@@ -11,7 +11,6 @@ import Jobs from "./pages/Jobs/Jobs";
 import Login from "./pages/Login/Login";
 import Newjob from "./pages/Newjob/Newjob";
 import Register from "./pages/Register/Register";
-
 import Navigation from "./components/navigation/Navigation";
 import Footer from "./components/footer/Footer";
 import Modal from "./components/modal/Modal";

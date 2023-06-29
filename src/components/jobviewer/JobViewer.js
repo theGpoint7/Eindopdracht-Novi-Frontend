@@ -5,7 +5,7 @@ import './JobViewer.css';
 function JobViewer(props) {
     const { title, jobFields } = props;
 
-//create a constant that filters empty fields in order to not generate anything if the fields is empty using the && operator below.
+//maak een constante die als truthy word gebruikt bij het genereren van een veld.
     const filteredFields = jobFields.filter(field => {
         return field.jobtitle || field.joburgency || field.helpstatus || field.helperstatistic || field.requeststatus || field.jobbutton;
     });

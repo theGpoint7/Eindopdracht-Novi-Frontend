@@ -7,14 +7,14 @@ export function getValidationFunction(fieldType) {
             return validateLastName;
         case 'email':
             return validateEmail;
-        case 'phone_number': // Changed to an underscore
+        case 'phone_number':
             return validatePhoneNumber;
-        case 'house_number': // Changed to an underscore
+        case 'house_number':
             return validateHouseNumber;
         case 'jobDescription':
             return validateTextArea;
         default:
-            return () => true; // default validation function that always returns true (no validation)
+            return () => true;
     }
 }
 

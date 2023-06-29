@@ -12,7 +12,7 @@ function Navigation() {
     function handleLogout(){
        console.log("handleLogoutFunction called")
             logout();
-    };
+    }
 
 
     return (

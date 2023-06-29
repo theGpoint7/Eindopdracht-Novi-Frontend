@@ -1,6 +1,5 @@
 import React from 'react';
-import './Home.css';
-
+import "./../../assets/constants.css";
 
 import { ReactComponent as SaffierKlusjes} from "../../assets/Saffier Klusjes.svg";
 import { ReactComponent as Idea} from "../../assets/Idea_icon.svg";

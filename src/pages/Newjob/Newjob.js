@@ -1,6 +1,4 @@
 import React from 'react';
-import './Newjob.css';
-
 import Form from "../../components/form/Form";
 
 

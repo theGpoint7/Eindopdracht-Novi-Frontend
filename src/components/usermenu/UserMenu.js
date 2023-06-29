@@ -49,7 +49,7 @@ function UserMenu({
     async function handlePasswordUpdate(data) {
         console.log("handlePasswordUpdate called")
         try {
-            // Check if the passwords match
+            // controleer of de wachtwoorden overeen komen
             if (data.passwordchange !== data.passwordchangeRepeat) {
                 setError("passwordchangeRepeat", { message: "Watchtwoorden komen niet overeen" });
                 console.log(errors);
@@ -57,7 +57,7 @@ function UserMenu({
                 return;
             }
 
-            // a put request for updating the password
+            // put request voor het updaten van het wachtwoord
             const response = await axios.put(`https://frontend-educational-backend.herokuapp.com/api/user`, {
                 password: data.passwordchange,
                 repeatedPassword: data.passwordchangeRepeat,
@@ -166,8 +166,8 @@ function UserMenu({
                                     <p></p>
                                     <button
                                         className="standard-button menu-style"
-                                        type="button" // keep the button type as 'button'
-                                        onClick={() => setShowPasswordFields(true)} // toggle the state variable here
+                                        type="button"
+                                        onClick={() => setShowPasswordFields(true)}
                                     >
                                         {button2}
                                     </button>

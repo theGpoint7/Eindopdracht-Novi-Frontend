@@ -16,7 +16,7 @@ function Modal({ displayModal, setDisplayModal, title, message, navigateTo }) {
                 <div className="modal">
                     <div
                         className="overlay"
-                        onClick={modalExitHandler} // Remove the '()' to pass the function as a reference
+                        onClick={modalExitHandler}
                     ></div>
                     <div className="modal-content">
                         <h2>{title}</h2>
@@ -25,7 +25,7 @@ function Modal({ displayModal, setDisplayModal, title, message, navigateTo }) {
                         </p>
                         <button
                             className="close-modal"
-                            onClick={modalExitHandler} // Remove the '()' to pass the function as a reference
+                            onClick={modalExitHandler}
                         >
                             Close
                         </button>

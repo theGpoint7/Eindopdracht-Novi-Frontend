@@ -1,5 +1,4 @@
 import React, { useContext, useState } from 'react';
-import './Account.css';
 import { AuthContext } from '../../context/AuthContext';
 
 import UserMenu from '../../components/usermenu/UserMenu';

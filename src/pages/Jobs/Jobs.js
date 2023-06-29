@@ -1,5 +1,4 @@
     import React from 'react';
-    import './Jobs.css';
     import JobViewer from "../../components/jobviewer/JobViewer";
 
     function Jobs () {
